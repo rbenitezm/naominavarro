@@ -98,12 +98,16 @@ const HomePage = () => {
     },
   ];
 
-  const handleContactClick = () => {
+  const handleContactClickScroll = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     } else {
       window.location.href = `mailto:${naomiEmail}`;
+      toast({
+        title: "Redirigiendo a tu cliente de correo",
+        description: `Listo para contactar a ${naomiEmail}`,
+      });
     }
   };
 
@@ -150,7 +154,7 @@ const HomePage = () => {
       />
       <PlansSection 
         plans={plans} 
-        onContactClick={handleContactClick}
+        onContactClick={handleContactClickScroll} 
         sectionVariants={sectionVariants} 
         itemVariants={itemVariants} 
       />
