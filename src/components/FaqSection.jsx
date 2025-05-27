@@ -9,6 +9,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { motion } from 'framer-motion';
+import ContactDialog from '@/components/ContactDialog';
 
 const FaqSection = ({ sectionVariants, itemVariants, onContactClick }) => {
   const faqs = [
@@ -82,17 +83,15 @@ const FaqSection = ({ sectionVariants, itemVariants, onContactClick }) => {
         </Accordion>
       </div>
       <motion.div
-            className="mt-12 text-center"
-            variants={itemVariants}
-            custom={0.4}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-          >
-            <Button size="lg" onClick={onContactClick} className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg transform hover:scale-105 transition-transform duration-300">
-              <Zap className="mr-2 h-5 w-5" /> ¡Empieza tu transformación!
-            </Button>
-          </motion.div>
+        className="mt-12 text-center"
+        variants={itemVariants}
+        custom={0.4}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+      >
+        <ContactDialog />
+      </motion.div>
     </motion.section>
 
   );

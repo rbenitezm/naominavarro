@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ContactDialog from '@/components/ContactDialog';
 
 const PlansSection = ({ plans, onContactClick, sectionVariants, itemVariants }) => {
   return (
@@ -49,12 +50,10 @@ const PlansSection = ({ plans, onContactClick, sectionVariants, itemVariants }) 
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button
-                    onClick={onContactClick}
-                    className={`w-full ${plan.popular ? 'bg-gradient-to-r from-accent to-yellow-400 text-white' : 'bg-primary text-primary-foreground'} hover:opacity-90 shadow-md transform hover:scale-105 transition-transform duration-300`}
-                  >
-                    {plan.cta}
-                  </Button>
+                <ContactDialog
+                    triggerText={plan.cta}
+                    buttonClassName={`w-full ${plan.popular ? 'bg-gradient-to-r from-accent to-yellow-400 text-white' : 'bg-primary text-primary-foreground'} hover:opacity-90 shadow-md transform hover:scale-105 transition-transform duration-300`}
+                  />
                 </CardFooter>
               </Card>
             </motion.div>

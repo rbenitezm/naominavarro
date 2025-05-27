@@ -79,7 +79,7 @@ const HomePage = () => {
       delay: 0.4,
     },
   ];
-  
+
   const testimonials = [
     {
       quote: "Naomi transformó mi relación con la comida. ¡Ahora como saludable y disfruto cada bocado!",
@@ -141,37 +141,37 @@ const HomePage = () => {
 
   return (
     <>
-      <HeroSection 
-        logoUrl={logoUrl} 
-        onContactClick={handleContactClick} 
-        sectionVariants={sectionVariants} 
-        itemVariants={itemVariants} 
+      <HeroSection
+        logoUrl={logoUrl}
+        onContactClick={handleContactClickScroll}
+        sectionVariants={sectionVariants}
+        itemVariants={itemVariants}
       />
       <AppAccessSection
         sectionVariants={sectionVariants}
         itemVariants={itemVariants}
-        onContactClick={handleContactClick} 
+        onContactClick={handleContactClickScroll}
       />
-      <PlansSection 
-        plans={plans} 
-        onContactClick={handleContactClickScroll} 
-        sectionVariants={sectionVariants} 
-        itemVariants={itemVariants} 
+      <PlansSection
+        plans={plans}
+        onContactClick={handleContactClickScroll}
+        sectionVariants={sectionVariants}
+        itemVariants={itemVariants}
       />
       <WhyChooseUsSection
         sectionVariants={sectionVariants}
         itemVariants={itemVariants}
       />
 
-      <TestimonialsSection 
+      <TestimonialsSection
         testimonials={testimonials}
-        sectionVariants={sectionVariants} 
-        itemVariants={itemVariants} 
+        sectionVariants={sectionVariants}
+        itemVariants={itemVariants}
       />
       <FaqSection
         sectionVariants={sectionVariants}
         itemVariants={itemVariants}
-        onContactClick={handleContactClick} 
+        onContactClick={handleContactClickScroll}
       />
     </>
   );

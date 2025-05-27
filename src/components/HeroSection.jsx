@@ -15,6 +15,8 @@ import {
 import { Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useToast } from '@/components/ui/use-toast';
+import ContactDialog from '@/components/ContactDialog';
+
 
 const HeroSection = ({ logoUrl, sectionVariants, itemVariants }) => {
   const [name, setName] = useState('');
@@ -37,12 +39,12 @@ const HeroSection = ({ logoUrl, sectionVariants, itemVariants }) => {
     const subject = `Solicitud de transformación de: ${name}`;
     const body = `Hola Naomi,\n\nMe gustaría empezar mi transformación.\n\nNombre: ${name}\nEmail: ${email}\n\n¡Gracias!`;
     window.location.href = `mailto:${naomiEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
+
     toast({
       title: "¡Formulario enviado!",
       description: "Redirigiendo a tu cliente de correo para enviar la información.",
     });
-    setIsDialogOpen(false); 
+    setIsDialogOpen(false);
     setName('');
     setEmail('');
   };
@@ -79,60 +81,7 @@ const HeroSection = ({ logoUrl, sectionVariants, itemVariants }) => {
           Naomi es tu experta en nutrición y entrenamientos personalizados. Su misión es enseñarte a comer de forma saludable y sostenible, adaptando cada plan a tus necesidades y objetivos únicos para que alcances tu mejor versión.
         </motion.p>
         <motion.div variants={itemVariants} custom={0.6}>
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg transform hover:scale-105 transition-transform duration-300">
-                <Zap className="mr-2 h-5 w-5" /> ¡Empieza tu transformación!
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] bg-background text-foreground">
-              <DialogHeader>
-                <DialogTitle className="text-primary">Comienza tu Viaje</DialogTitle>
-                <DialogDescription>
-                  Rellena tus datos y Naomi se pondrá en contacto contigo lo antes posible.
-                </DialogDescription>
-              </DialogHeader>
-              <form onSubmit={handleSubmit}>
-                <div className="grid gap-4 py-4">
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="name" className="text-right text-foreground/80">
-                      Nombre
-                    </Label>
-                    <Input
-                      id="name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="col-span-3 bg-background border-border focus:ring-accent"
-                      placeholder="Tu nombre completo"
-                    />
-                  </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="email" className="text-right text-foreground/80">
-                      Email
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="col-span-3 bg-background border-border focus:ring-accent"
-                      placeholder="tu@email.com"
-                    />
-                  </div>
-                </div>
-                <DialogFooter>
-                  <DialogClose asChild>
-                     <Button type="button" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                        Cancelar
-                      </Button>
-                  </DialogClose>
-                  <Button type="submit" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                    Comienza ya
-                  </Button>
-                </DialogFooter>
-              </form>
-            </DialogContent>
-          </Dialog>
+          <ContactDialog />
         </motion.div>
       </div>
     </motion.section>
