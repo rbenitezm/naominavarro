@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Mail, Menu, X, Home, User, Tag as TagIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Instagram } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,36 +19,55 @@ const Header = ({ onContactClick }) => {
     { to: "/", label: "Inicio", icon: <Home className="mr-2 h-4 w-4" /> },
     { to: "/quien-soy", label: "Quién Soy", icon: <User className="mr-2 h-4 w-4" /> },
     { to: "/descuentos-suplementacion", label: "Suplementos", icon: <TagIcon className="mr-2 h-4 w-4" /> },
+    {
+      to: "https://www.instagram.com/naomi_navarro_coach",
+      label: "Instagram",
+      icon: <Instagram className="mr-2 h-4 w-4" />,
+      external: true
+    },
   ];
 
-  const NavItem = ({ to, children, onClick }) => (
-    <NavLink
-      to={to}
-      onClick={onClick}
-      className={({ isActive }) =>
-        `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ${
-          isActive
+  const NavItem = ({ to, icon, children, onClick, external }) => {
+    if (external) {
+      return (
+        <a
+          href={to}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 text-foreground/70 hover:text-primary hover:bg-secondary/50"
+        >
+          {icon} {children}
+        </a>
+      );
+    }
+
+    return (
+      <NavLink
+        to={to}
+        onClick={onClick}
+        className={({ isActive }) =>
+          `flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ${isActive
             ? 'bg-accent/20 text-accent'
             : 'text-foreground/70 hover:text-primary hover:bg-secondary/50'
-        }`
-      }
-    >
-      {children}
-    </NavLink>
-  );
+          }`
+        }
+      >
+        {icon} {children}
+      </NavLink>
+    );
+  };
 
   const MobileNavItem = ({ to, children, onClick }) => (
-     <NavLink
+    <NavLink
       to={to}
       onClick={() => {
         onClick();
         setMobileMenuOpen(false);
       }}
       className={({ isActive }) =>
-        `flex items-center w-full px-4 py-3 text-base font-medium rounded-md ${
-          isActive
-            ? 'bg-accent/20 text-accent'
-            : 'text-foreground/80 hover:bg-secondary/50 hover:text-primary'
+        `flex items-center w-full px-4 py-3 text-base font-medium rounded-md ${isActive
+          ? 'bg-accent/20 text-accent'
+          : 'text-foreground/80 hover:bg-secondary/50 hover:text-primary'
         }`
       }
     >
@@ -68,7 +88,9 @@ const Header = ({ onContactClick }) => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-2">
           {navLinks.map(link => (
-            <NavItem key={link.to} to={link.to}>{link.label}</NavItem>
+            <NavItem key={link.to} to={link.to} icon={link.icon} external={link.external}>
+              {link.label}
+            </NavItem>
           ))}
         </nav>
 
@@ -89,17 +111,6 @@ const Header = ({ onContactClick }) => {
                   </MobileNavItem>
                 </DropdownMenuItem>
               ))}
-              <DropdownMenuItem asChild className="focus:bg-accent/10">
-                 <button 
-                    onClick={() => {
-                      onContactClick();
-                      setMobileMenuOpen(false);
-                    }} 
-                    className="flex items-center w-full px-4 py-3 text-base font-medium rounded-md text-foreground/80 hover:bg-secondary/50 hover:text-primary"
-                  >
-                    <Mail className="mr-2 h-4 w-4" /> Contactar
-                  </button>
-              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
