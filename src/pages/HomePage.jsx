@@ -14,7 +14,7 @@ import ContactSection from '@/components/ContactSection';
 const HomePage = () => {
   const { toast } = useToast();
   const naomiEmail = "naominavarrogarriga@gmail.com";
-  const logoUrl = "https://storage.googleapis.com/hostinger-horizons-assets-prod/1c5e7abd-ffa0-4121-b34d-e1c4c094ed5d/f34b30550ff400d2be6d2f6d6dbcb237.jpg";
+  const logoUrl = "https://raw.githubusercontent.com/rbenitezm/naominavarro/main/src/images/logo-principal.png";
 
   const plans = [
     {
@@ -104,10 +104,6 @@ const HomePage = () => {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     } else {
       window.location.href = `mailto:${naomiEmail}`;
-      toast({
-        title: "Redirigiendo a tu cliente de correo",
-        description: `Listo para contactar a ${naomiEmail}`,
-      });
     }
   };
 
@@ -172,10 +168,6 @@ const HomePage = () => {
         sectionVariants={sectionVariants}
         itemVariants={itemVariants}
         onContactClick={handleContactClick} 
-      />
-      <ContactSection 
-        naomiEmail={naomiEmail}
-        sectionVariants={sectionVariants}
       />
     </>
   );
