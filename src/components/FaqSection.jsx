@@ -17,18 +17,28 @@ const FaqSection = ({ sectionVariants, itemVariants }) => {
     },
     {
       question: "¿Con qué frecuencia se realizan los seguimientos?",
-      answer: "Los seguimientos se realizan semanalmente. Esto nos permite ajustar el plan según tu progreso, resolver dudas y mantener la motivación alta.",
+      answer: "Los seguimientos se realizan semanalmente. Se propone una fecha semanal para el seguimiento que podrá ser mediante teléfono, mail o videollamada. Esto nos permite ajustar el plan según tu progreso, resolver dudas y mantener la motivación alta.",
       delay: 0.2,
     },
     {
-      question: "¿Qué incluye exactamente el batch cooking?",
-      answer: "La preparación de batch cooking para 3 días incluye la planificación de las comidas, la lista de la compra optimizada y las recetas detalladas para que puedas cocinar de forma eficiente y tener tus comidas listas.",
-      delay: 0.3,
+      question: "¿Y en qué horarios se hacen los seguimientos?",
+      answer: "El horario es flexible y se adapta a tus necesidades. Podemos coordinar una franja horaria que funcione para ambos, ya sea por la mañana, tarde o incluso fines de semana. El objetivo es que te sientas acompañado sin que interfiera con tu rutina.",
+      delay: 0.2,
+    },
+    {
+      question: "¿Hay algún tipo de permanencia?",
+      answer: "No, no hay compromiso de permanencia. Puedes dejar el servicio en cualquier momento. Sin embargo, si eliges un pack trimestral, te beneficias de un precio reducido y mayor continuidad en el acompañamiento, lo que suele mejorar los resultados y la adherencia.",
+      delay: 0.2,
     },
     {
       question: "¿Puedo cambiar de plan durante el proceso?",
       answer: "¡Sí! Si tus necesidades cambian o quieres acceder a más servicios, podemos ajustar tu plan en cualquier momento. Lo importante es que te sientas cómodo y apoyado.",
       delay: 0.4,
+    },
+    {
+      question: "¿Qué incluye exactamente el batch cooking?",
+      answer: "La preparación de batch cooking para 3 días incluye la planificación y la realización a tu lado de las comidas, la lista de la compra optimizada y las recetas detalladas para que puedas cocinar de forma eficiente y tener tus comidas listas.",
+      delay: 0.3,
     },
   ];
 

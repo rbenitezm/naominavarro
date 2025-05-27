@@ -84,10 +84,6 @@ const AppAccessSection = ({ sectionVariants, itemVariants }) => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
-          <img  
-            className="max-w-md mx-auto rounded-lg shadow-xl" 
-            alt="Maqueta de la aplicación de dietas en un smartphone"
-           src="https://images.unsplash.com/photo-1641130382532-2514a6c93859" />
         </motion.div>
 
       </div>

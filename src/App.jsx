@@ -21,10 +21,12 @@ const App = () => {
   const plans = [
     {
       name: "Pack Básico",
-      price: "74€",
+      price: "82€",
       features: [
         "Plan nutricional adaptado a objetivos y preferencias",
         "Seguimiento semanal por 1 mes",
+        "Lista de la compra",
+        "Acceso a software de dietas",
       ],
       icon: <Zap className="w-8 h-8 text-primary" />,
       cta: "Empezar Ahora",
@@ -34,10 +36,11 @@ const App = () => {
       name: "Pack Intermedio",
       price: "111€",
       features: [
-        "Todo lo del Pack Básico",
-        "Entrenamiento personalizado",
+        "Plan nutricional adaptado a objetivos y preferencias",
+        "Seguimiento semanal por 1 mes",
         "Lista de la compra",
         "Acceso a software de dietas",
+        "Entrenamiento personalizado",
       ],
       icon: <ShoppingBag className="w-8 h-8 text-primary" />,
       cta: "Elegir Intermedio",
@@ -48,20 +51,26 @@ const App = () => {
       name: "Pack Premium",
       price: "189€",
       features: [
-        "Todo lo del Pack Intermedio",
+        "Plan nutricional adaptado a objetivos y preferencias",
+        "Seguimiento semanal por 1 mes",
+        "Lista de la compra",
+        "Acceso a software de dietas",
+        "Entrenamiento personalizado",
         "Preparación batch cooking para 3 días",
         "Acompañamiento de compra",
-        "Entreno individualizado",
       ],
       icon: <Utensils className="w-8 h-8 text-primary" />,
       cta: "Conseguir Premium",
       delay: 0.3,
     },
     {
-      name: "Pack Abonado",
-      price: "400€",
+      name: "Pack Abonado - AÑADIR DESCUENTO",
+      price: "220€",
       features: [
-        "Todo lo del Pack Premium",
+        "Plan nutricional adaptado a objetivos y preferencias",
+        "Seguimiento semanal por 3 meses",
+        "Lista de la compra",
+        "Acceso a software de dietas",
         "Seguimiento trimestral continuo",
         "Acceso prioritario a consultas",
         "Planificación avanzada de temporada",
@@ -142,6 +151,10 @@ const App = () => {
           sectionVariants={sectionVariants} 
           itemVariants={itemVariants} 
         />
+        <AppAccessSection
+          sectionVariants={sectionVariants}
+          itemVariants={itemVariants}
+        />
         <PlansSection 
           plans={plans} 
           onContactClick={handleContactClick}
@@ -152,10 +165,7 @@ const App = () => {
           sectionVariants={sectionVariants}
           itemVariants={itemVariants}
         />
-        <AppAccessSection
-          sectionVariants={sectionVariants}
-          itemVariants={itemVariants}
-        />
+
         <TestimonialsSection 
           testimonials={testimonials}
           sectionVariants={sectionVariants} 

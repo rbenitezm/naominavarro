@@ -8,7 +8,7 @@ const Header = ({ onContactClick }) => {
     <header className="py-6 px-4 md:px-8 sticky top-0 z-50 bg-background/80 backdrop-blur-md shadow-sm">
       <div className="container mx-auto flex justify-between items-center">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-          <span className="text-2xl font-bold text-primary">Naomi Navarro, Tu Coach</span>
+          <span className="text-2xl font-bold text-primary">Naomi Navarro</span>
         </motion.div>
         {/* <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
           <Button onClick={onContactClick} variant="ghost">

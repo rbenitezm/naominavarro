@@ -17,7 +17,7 @@ const PlansSection = ({ plans, onContactClick, sectionVariants, itemVariants }) 
     >
       <div className="container mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Nuestros Packs Personalizados</h2>
-        <p className="text-center text-lg text-foreground/70 mb-12 max-w-xl mx-auto">Elige el plan que mejor se adapte a tus metas y estilo de vida.</p>
+        <p className="text-center text-lg text-foreground/70 mb-12 max-w-xl mx-auto">Elige el plan que mejor se adapte a tus metas, necesidades y estilo de vida.</p>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {plans.map((plan) => (
             <motion.div
