@@ -16,7 +16,7 @@ const ProviderSection = ({ provider, sectionVariants, itemVariants, handleCopyCo
   >
     <div className="text-center mb-8 md:mb-12">
       {provider.logoUrl ? (
-        <img  src={provider.logoUrl} alt={`Logo de ${provider.name}`} className="h-16 md:h-20 mx-auto mb-4 object-contain" />
+        <img src={provider.logoUrl} alt={`Logo de ${provider.name}`} className="h-16 md:h-20 mx-auto mb-4 object-contain" />
       ) : (
         <div className="h-16 md:h-20 flex items-center justify-center mx-auto mb-4">
           <span className="text-2xl font-bold text-primary">{provider.name}</span>
@@ -74,13 +74,13 @@ const ProviderSection = ({ provider, sectionVariants, itemVariants, handleCopyCo
           custom={product.delay}
         >
           <div className="aspect-video bg-gray-200 flex items-center justify-center overflow-hidden">
-            <img  className="w-full h-full object-contain p-2" alt={product.altText} src="https://images.unsplash.com/photo-1587684730061-3318058b5a76" />
+            <img className="w-full h-full object-contain p-2" alt={product.altText} src={product.productImg} />
           </div>
           <div className="p-5 flex flex-col flex-grow">
             <h4 className="text-lg font-semibold text-primary mb-2">{product.name}</h4>
             <p className="text-foreground/80 text-sm mb-4 flex-grow">{product.description}</p>
             <Button asChild variant="outline" className="mt-auto w-full border-accent text-accent hover:bg-accent/10 hover:text-accent">
-              <a href={provider.websiteUrl} target="_blank" rel="noopener noreferrer">
+              <a href={product.productUrl} target="_blank" rel="noopener noreferrer">
                 Ver producto
               </a>
             </Button>
@@ -98,10 +98,10 @@ const SupplementsPage = () => {
   const providers = [
     {
       name: "N-PRO",
-      logoUrl: "https://n-pro.es/img/n-pro-logo-1670587210.jpg", 
+      logoUrl: "https://n-pro.es/img/n-pro-logo-1670587210.jpg",
       intro: "Accede a suplementación de alta calidad con N-PRO utilizando mi código de descuento exclusivo.",
       discountCode: "521986",
-      websiteUrl: "https://www.n-pro.es/", 
+      websiteUrl: "https://www.n-pro.es/",
       instructions: [
         "1. Visita la web de N-PRO.",
         "2. Añade tus productos al carrito.",
@@ -109,10 +109,11 @@ const SupplementsPage = () => {
       ],
       codeNote: "Este código te proporcionará un descuento en tu compra.",
       products: [
-        { name: "N-PRO Whey Protein", description: "Proteína de suero de alta calidad para el desarrollo muscular.", imgPlaceholder: "Bote de N-PRO Whey Protein", altText: "N-PRO Whey Protein", delay: 0.1 },
-        { name: "N-PRO Creatine", description: "Creatina monohidrato para mejorar fuerza y rendimiento.", imgPlaceholder: "Envase de N-PRO Creatine", altText: "N-PRO Creatine", delay: 0.2 },
-        { name: "N-PRO BCAA Complex", description: "Aminoácidos ramificados para recuperación y energía.", imgPlaceholder: "Frasco de N-PRO BCAA Complex", altText: "N-PRO BCAA Complex", delay: 0.3 },
-        { name: "N-PRO Multivitamin Pro", description: "Complejo vitamínico avanzado para deportistas.", imgPlaceholder: "Caja de N-PRO Multivitamin Pro", altText: "N-PRO Multivitamin Pro", delay: 0.4 },
+        { name: "NPRO ENZIMDIGEST 60 caps", description: "NPro Enzimdigest es un complemento alimenticio que combina enzimas digestivas, betaína clorhidrato y extractos de plantas como hinojo y manzanilla.", imgPlaceholder: "NPRO ENZIMDIGEST 60 caps", altText: "NPRO ENZIMDIGEST 60 caps", productUrl: "https://npro.es/producto/enzimdigest-60caps", productImg: "https://npro.es/wp-content/uploads/2024/04/NPRO-ENZIMDIGEST-60caps.png", delay: 0.1 },
+        { name: "NPRO METANINTEST 90 caps", description: "Npro Metanintest contiene una mezcla innovadora de extractos de plantas ricas en polifenoles, aceites aceites esenciales microencapsulados y cepas probióticas.", imgPlaceholder: "NPRO METANINTEST 90 caps", altText: "NPRO METANINTEST 90 caps", productUrl: "https://npro.es/producto/npro-metanintest-90-caps/", productImg: "https://npro.es/wp-content/uploads/2024/04/NPRO-METANINTEST-90caps.png", delay: 0.4 },
+        { name: "N-PRO NPRO CLEANINTEST 60 caps", description: "NPro Cleanintest está formulado con extractos vegetales de neem, orégano, agracejo, tomillo, romero, menta y clavo. El tomillo tiene un efecto antibacteriano y el orégano y la menta contribuyen al funcionamiento normal del tracto intestinal.", imgPlaceholder: "N-PRO NPRO CLEANINTEST 60 caps", altText: "N-PRO NPRO CLEANINTEST 60 caps", productUrl: "https://npro.es/producto/cleanintest/", productImg: "https://npro.es/wp-content/uploads/2024/04/NPRO-CLEANINTEST-60caps.png", delay: 0.2 },
+        { name: "NPRO REGENINTEST 60 caps", description: "NPro Regenintest contiene una combinación de ingredientes de alta calidad, tales como la cúrcuma, que tiene acción antiinflamatoria y que ayuda a mantener la eficacia del sistema inmunitario, y el zinc, que contribuye al mantenimiento de la piel en condiciones normales, al proceso de división celular y a la protección de las células frente al daño oxidativo.", imgPlaceholder: "NPRO REGENINTEST 60 caps", altText: "NPRO REGENINTEST 60 caps", productUrl: "https://npro.es/producto/npro-regenintest-60-caps/", productImg: "https://npro.es/wp-content/uploads/2022/07/NPRO-REGENINTEST-60caps.png", delay: 0.3 },
+
       ],
       delay: 0.2,
     },
@@ -120,7 +121,7 @@ const SupplementsPage = () => {
       name: "100% Natural (Perfil Natural Venta Privada)",
       logoUrl: "https://storage.googleapis.com/hostinger-horizons-assets-prod/1c5e7abd-ffa0-4121-b34d-e1c4c094ed5d/77c0eec9b5bb3175fe409f2aaeaa64b8.jpg",
       intro: "Consigue productos de 100% Natural a precios ventajosos a través de la Venta Privada con mi código de invitación.",
-      discountCode: "GQKGT2BT", 
+      discountCode: "GQKGT2BT",
       websiteUrl: "https://www.ventaprivada.perfilnatural.com",
       instructions: [
         "1. Accede a la página web: https://www.ventaprivada.perfilnatural.com",
@@ -130,10 +131,10 @@ const SupplementsPage = () => {
       ],
       codeNote: "Este código de invitación es personal e intransferible, no está permitido compartirlo sin la autorización expresa de Perfil Natural. Es para registrarse en la venta privada.",
       products: [
-        { name: "Vitamina C Liposomada", description: "Alta biodisponibilidad para un sistema inmune fuerte.", imgPlaceholder: "Frasco de Vitamina C Liposomada", altText: "100% Natural Vitamina C Liposomada", delay: 0.1 },
-        { name: "Magnesio Bisglicinato", description: "Magnesio de alta absorción para músculos y sistema nervioso.", imgPlaceholder: "Bote de Magnesio Bisglicinato", altText: "100% Natural Magnesio Bisglicinato", delay: 0.2 },
-        { name: "Probiótico Avanzado", description: "Mezcla de cepas para una salud intestinal óptima.", imgPlaceholder: "Caja de Probiótico Avanzado", altText: "100% Natural Probiótico Avanzado", delay: 0.3 },
-        { name: "Colágeno con Magnesio y Vitamina C", description: "Para la salud de articulaciones, piel y huesos.", imgPlaceholder: "Envase de Colágeno con Magnesio y Vitamina C", altText: "100% Natural Colágeno", delay: 0.4 },
+        { name: "Vitamina C Liposomada", description: "Alta biodisponibilidad para un sistema inmune fuerte.", imgPlaceholder: "Frasco de Vitamina C Liposomada", altText: "100% Natural Vitamina C Liposomada", productUrl: "https://www.cienporciennatural.com/productos/aceite-de-krill", delay: 0.1 },
+        { name: "Magnesio Bisglicinato", description: "Magnesio de alta absorción para músculos y sistema nervioso.", imgPlaceholder: "Bote de Magnesio Bisglicinato", altText: "100% Natural Magnesio Bisglicinato", productUrl: "https://www.cienporciennatural.com/productos/colesteril", delay: 0.2 },
+        { name: "Probiótico Avanzado", description: "Mezcla de cepas para una salud intestinal óptima.", imgPlaceholder: "Caja de Probiótico Avanzado", altText: "100% Natural Probiótico Avanzado", productUrl: "https://www.cienporciennatural.com/productos/condroartil-colageno-uc-ii", delay: 0.3 },
+        { name: "Colágeno con Magnesio y Vitamina C", description: "Para la salud de articulaciones, piel y huesos.", imgPlaceholder: "Envase de Colágeno con Magnesio y Vitamina C", altText: "100% Natural Colágeno", productUrl: "https://www.cienporciennatural.com/productos/curcufit", delay: 0.4 },
       ],
       delay: 0.4,
     }
@@ -185,7 +186,7 @@ const SupplementsPage = () => {
         </motion.div>
 
         {providers.map((provider) => (
-          <ProviderSection 
+          <ProviderSection
             key={provider.name}
             provider={provider}
             sectionVariants={sectionVariants}
