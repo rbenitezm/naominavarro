@@ -1,0 +1,121 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* White */
+    --foreground: 0 0% 0%; /* Black */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%; /* Black */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%; /* Black */
+
+    --primary: 0 0% 0%; /* Black for primary elements like titles, icons */
+    --primary-foreground: 0 0% 100%; /* White for text on primary elements */
+    
+    --secondary: 35 65% 90%; /* Light Beige/Cream from image background */
+    --secondary-foreground: 0 0% 0%; /* Black for text on secondary elements */
+
+    --muted: 60 4.8% 95.9%; /* Light Gray */
+    --muted-foreground: 0 0% 25%; /* Darker Gray for muted text */
+
+    --accent: 40 80% 60%; /* Gold/Mustard from image */
+    --accent-foreground: 0 0% 0%; /* Black for text on accent elements */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 40 80% 60%; /* Accent color for rings */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 0 0% 98%;
+
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 90%; /* Lighter gray for dark mode primary */
+    --primary-foreground: 20 14.3% 4.1%;
+
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 40 80% 60%;
+    --accent-foreground: 20 14.3% 4.1%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 40 80% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--background)) 70%, hsl(var(--accent) / 0.1) 100%);
+    opacity: 0.8;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--secondary) / 0.5);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent) / 0.7); /* Changed to accent color */
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent)); /* Changed to accent color */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-semibold tracking-tight text-primary; /* Titles will use primary color (black) */
+}
+
+h1 { @apply text-4xl md:text-5xl lg:text-6xl; }
+h2 { @apply text-3xl md:text-4xl; }
+h3 { @apply text-2xl md:text-3xl; }
+
+.section-padding {
+  @apply py-12 md:py-20 lg:py-24;
+}
+
+.glassmorphism-card {
+  @apply bg-card/70 backdrop-blur-md border border-white/20 shadow-xl;
+}
