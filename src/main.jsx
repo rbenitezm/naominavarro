@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import HomePage from '@/pages/HomePage';
 import AboutPage from '@/pages/AboutPage';
-import SupplementsPage from '@/pages/SupplementsPage';
+import NproPage from '@/pages/NproPage';
+import CienPorCienNaturalPage from '@/pages/CienPorCienNaturalPage';
 import '@/index.css';
 
 const router = createBrowserRouter([
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "quien-soy", element: <AboutPage /> },
-      { path: "descuentos-suplementacion", element: <SupplementsPage /> },
+      { path: "suplementos/npro", element: <NproPage /> },
+      { path: "suplementos/cien-por-cien-natural", element: <CienPorCienNaturalPage /> },
     ],
   },
 ]);

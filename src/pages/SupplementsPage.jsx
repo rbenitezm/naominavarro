@@ -2,143 +2,38 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tag, ShoppingCart, Percent, ExternalLink, Info } from 'lucide-react';
+import { Tag, ShoppingCart, Percent, ExternalLink, Info, Copy, Check } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { useState } from 'react';
 
-const ProviderSection = ({ provider, sectionVariants, itemVariants, handleCopyCode }) => (
-  <motion.section
-    className="mb-16 md:mb-20"
-    variants={sectionVariants}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.1 }}
-    custom={provider.delay}
+const ProductCard = ({ product, providerUrl, itemVariants }) => (
+  <motion.div
+    variants={itemVariants}
+    custom={product.delay}
+    className="bg-card border border-border rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300"
   >
-    <div className="text-center mb-8 md:mb-12">
-      {provider.logoUrl ? (
-        <img src={provider.logoUrl} alt={`Logo de ${provider.name}`} className="h-16 md:h-20 mx-auto mb-4 object-contain" />
-      ) : (
-        <div className="h-16 md:h-20 flex items-center justify-center mx-auto mb-4">
-          <span className="text-2xl font-bold text-primary">{provider.name}</span>
-        </div>
-      )}
-      <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">{provider.name}</h2>
-      <p className="text-md text-foreground/70 max-w-2xl mx-auto">{provider.intro}</p>
+    <div className="w-full h-48 bg-muted overflow-hidden">
+      <img
+        className="w-full h-full object-contain"
+        alt={product.altText}
+        src={product.productImg} />
     </div>
-
-    <Card className="glassmorphism-card mb-10">
-      <CardHeader>
-        <CardTitle className="flex items-center text-xl text-primary">
-          <Info className="w-6 h-6 mr-3 text-accent" />
-          Instrucciones y Código de Descuento
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <ul className="list-decimal list-inside space-y-2 text-foreground/80 text-sm pl-2">
-          {provider.instructions.map((step, index) => (
-            <li key={index}>{step}</li>
-          ))}
-        </ul>
-        <div className="bg-secondary/50 p-4 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-3 shadow-inner">
-          <div className="flex items-center gap-2">
-            <Tag className="w-6 h-6 text-primary hidden sm:block" />
-            <p className="text-sm text-foreground">Código:
-              <span className="ml-2 text-lg font-bold text-accent bg-background/50 px-3 py-1 rounded">{provider.discountCode}</span>
-            </p>
-          </div>
-          <Button onClick={() => handleCopyCode(provider.discountCode, provider.name)} size="sm" variant="outline" className="bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto">
-            Copiar Código
-          </Button>
-        </div>
-        {provider.codeNote && <p className="text-xs text-muted-foreground italic">{provider.codeNote}</p>}
-        <Button asChild size="lg" className="w-full mt-4 bg-accent hover:bg-accent/90 text-accent-foreground shadow-md transform hover:scale-105 transition-transform duration-300">
-          <a href={provider.websiteUrl} target="_blank" rel="noopener noreferrer">
-            Visitar {provider.name} <ExternalLink className="ml-2 h-5 w-5" />
-          </a>
-        </Button>
-      </CardContent>
-    </Card>
-
-    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-8 text-center">
-      Productos <span className="text-accent">Recomendados de {provider.name}</span>
-    </h3>
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {provider.products.map((product) => (
-        <motion.div
-          key={product.name}
-          className="glassmorphism-card rounded-lg overflow-hidden flex flex-col"
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          custom={product.delay}
-        >
-          <div className="aspect-video bg-gray-200 flex items-center justify-center overflow-hidden">
-            <img className="w-full h-full object-contain p-2" alt={product.altText} src={product.productImg} />
-          </div>
-          <div className="p-5 flex flex-col flex-grow">
-            <h4 className="text-lg font-semibold text-primary mb-2">{product.name}</h4>
-            <p className="text-foreground/80 text-sm mb-4 flex-grow">{product.description}</p>
-            <Button asChild variant="outline" className="mt-auto w-full border-accent text-accent hover:bg-accent/10 hover:text-accent">
-              <a href={product.productUrl} target="_blank" rel="noopener noreferrer">
-                Ver producto
-              </a>
-            </Button>
-          </div>
-        </motion.div>
-      ))}
+    <div className="p-5 flex flex-col flex-grow">
+      <h4 className="text-lg font-semibold text-primary mb-2">{product.name}</h4>
+      <p className="text-foreground/80 text-sm mb-4 flex-grow">{product.description}</p>
+      <Button asChild variant="outline" className="mt-auto w-full border-accent text-accent hover:bg-accent/10 hover:text-accent">
+        <a href={product.productUrl} target="_blank" rel="noopener noreferrer">
+          Ver producto en {product.providerName || "sitio"}
+        </a>
+      </Button>
     </div>
-  </motion.section>
+  </motion.div>
 );
 
 
-const SupplementsPage = () => {
+const ProviderPageLayout = ({ providerData }) => {
   const { toast } = useToast();
-
-  const providers = [
-    {
-      name: "N-PRO",
-      logoUrl: "https://n-pro.es/img/n-pro-logo-1670587210.jpg",
-      intro: "Accede a suplementación de alta calidad con N-PRO utilizando mi código de descuento exclusivo.",
-      discountCode: "521986",
-      websiteUrl: "https://www.n-pro.es/",
-      instructions: [
-        "1. Visita la web de N-PRO.",
-        "2. Añade tus productos al carrito.",
-        "3. Introduce el código de descuento 521986 antes de finalizar la compra.",
-      ],
-      codeNote: "Este código te proporcionará un descuento en tu compra.",
-      products: [
-        { name: "NPRO ENZIMDIGEST 60 caps", description: "NPro Enzimdigest es un complemento alimenticio que combina enzimas digestivas, betaína clorhidrato y extractos de plantas como hinojo y manzanilla.", imgPlaceholder: "NPRO ENZIMDIGEST 60 caps", altText: "NPRO ENZIMDIGEST 60 caps", productUrl: "https://npro.es/producto/enzimdigest-60caps", productImg: "https://npro.es/wp-content/uploads/2024/04/NPRO-ENZIMDIGEST-60caps.png", delay: 0.1 },
-        { name: "NPRO METANINTEST 90 caps", description: "Npro Metanintest contiene una mezcla innovadora de extractos de plantas ricas en polifenoles, aceites aceites esenciales microencapsulados y cepas probióticas.", imgPlaceholder: "NPRO METANINTEST 90 caps", altText: "NPRO METANINTEST 90 caps", productUrl: "https://npro.es/producto/npro-metanintest-90-caps/", productImg: "https://npro.es/wp-content/uploads/2024/04/NPRO-METANINTEST-90caps.png", delay: 0.4 },
-        { name: "N-PRO NPRO CLEANINTEST 60 caps", description: "NPro Cleanintest está formulado con extractos vegetales de neem, orégano, agracejo, tomillo, romero, menta y clavo. El tomillo tiene un efecto antibacteriano y el orégano y la menta contribuyen al funcionamiento normal del tracto intestinal.", imgPlaceholder: "N-PRO NPRO CLEANINTEST 60 caps", altText: "N-PRO NPRO CLEANINTEST 60 caps", productUrl: "https://npro.es/producto/cleanintest/", productImg: "https://npro.es/wp-content/uploads/2024/04/NPRO-CLEANINTEST-60caps.png", delay: 0.2 },
-        { name: "NPRO REGENINTEST 60 caps", description: "NPro Regenintest contiene una combinación de ingredientes de alta calidad, tales como la cúrcuma, que tiene acción antiinflamatoria y que ayuda a mantener la eficacia del sistema inmunitario, y el zinc, que contribuye al mantenimiento de la piel en condiciones normales, al proceso de división celular y a la protección de las células frente al daño oxidativo.", imgPlaceholder: "NPRO REGENINTEST 60 caps", altText: "NPRO REGENINTEST 60 caps", productUrl: "https://npro.es/producto/npro-regenintest-60-caps/", productImg: "https://npro.es/wp-content/uploads/2022/07/NPRO-REGENINTEST-60caps.png", delay: 0.3 },
-
-      ],
-      delay: 0.2,
-    },
-    {
-      name: "100% Natural (Perfil Natural Venta Privada)",
-      logoUrl: "https://storage.googleapis.com/hostinger-horizons-assets-prod/1c5e7abd-ffa0-4121-b34d-e1c4c094ed5d/77c0eec9b5bb3175fe409f2aaeaa64b8.jpg",
-      intro: "Consigue productos de 100% Natural a precios ventajosos a través de la Venta Privada con mi código de invitación.",
-      discountCode: "GQKGT2BT",
-      websiteUrl: "https://www.ventaprivada.perfilnatural.com",
-      instructions: [
-        "1. Accede a la página web: https://www.ventaprivada.perfilnatural.com",
-        "2. Si es tu primera vez: Regístrate, completa el formulario e introduce el código de invitación GQKGT2BT y pulsa guardar.",
-        "3. Si ya estás registrado: Haz login con tu usuario y contraseña.",
-        "4. Una vez dentro, podrás comprar los complementos alimenticios de 100% Natural en condiciones ventajosas."
-      ],
-      codeNote: "Este código de invitación es personal e intransferible, no está permitido compartirlo sin la autorización expresa de Perfil Natural. Es para registrarse en la venta privada.",
-      products: [
-        { name: "Vitamina C Liposomada", description: "Alta biodisponibilidad para un sistema inmune fuerte.", imgPlaceholder: "Frasco de Vitamina C Liposomada", altText: "100% Natural Vitamina C Liposomada", productUrl: "https://www.cienporciennatural.com/productos/aceite-de-krill", delay: 0.1 },
-        { name: "Magnesio Bisglicinato", description: "Magnesio de alta absorción para músculos y sistema nervioso.", imgPlaceholder: "Bote de Magnesio Bisglicinato", altText: "100% Natural Magnesio Bisglicinato", productUrl: "https://www.cienporciennatural.com/productos/colesteril", delay: 0.2 },
-        { name: "Probiótico Avanzado", description: "Mezcla de cepas para una salud intestinal óptima.", imgPlaceholder: "Caja de Probiótico Avanzado", altText: "100% Natural Probiótico Avanzado", productUrl: "https://www.cienporciennatural.com/productos/condroartil-colageno-uc-ii", delay: 0.3 },
-        { name: "Colágeno con Magnesio y Vitamina C", description: "Para la salud de articulaciones, piel y huesos.", imgPlaceholder: "Envase de Colágeno con Magnesio y Vitamina C", altText: "100% Natural Colágeno", productUrl: "https://www.cienporciennatural.com/productos/curcufit", delay: 0.4 },
-      ],
-      delay: 0.4,
-    }
-  ];
+  const [copied, setCopied] = useState(false);
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -160,14 +55,16 @@ const SupplementsPage = () => {
 
   const handleCopyCode = (code, providerName) => {
     navigator.clipboard.writeText(code);
+    setCopied(true);
     toast({
       title: "¡Código Copiado!",
       description: `El código ${code} para ${providerName} ha sido copiado a tu portapapeles.`,
     });
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div className="section-padding">
+    <div className="section-padding bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto">
         <motion.div
           className="text-center mb-12 md:mb-16"
@@ -176,27 +73,89 @@ const SupplementsPage = () => {
           animate="visible"
           custom={0.1}
         >
-          <Percent className="w-16 h-16 text-accent mx-auto mb-4" />
+          {providerData.logoUrl && (
+            <img src={providerData.logoUrl} alt={`Logo de ${providerData.name}`} className="h-16 md:h-20 mx-auto mb-6 object-contain" />
+          )}
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-            Descuentos Exclusivos en <span className="text-accent">Suplementación</span>
+            {providerData.pageTitle || `Descuentos en ${providerData.name}`}
           </h1>
           <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
-            Como cliente/a, tienes acceso a descuentos especiales y condiciones ventajosas en productos de mis marcas colaboradoras. Utiliza los códigos y enlaces proporcionados para mejorar tus resultados.
+            {providerData.intro}
           </p>
         </motion.div>
 
-        {providers.map((provider) => (
-          <ProviderSection
-            key={provider.name}
-            provider={provider}
-            sectionVariants={sectionVariants}
-            itemVariants={itemVariants}
-            handleCopyCode={handleCopyCode}
-          />
-        ))}
+        <motion.section
+          className="mb-12 md:mb-16 p-6 md:p-8 bg-card border border-border rounded-xl shadow-lg"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+          custom={0.2}
+        >
+          <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-6 text-center">
+            <Tag className="inline-block w-7 h-7 mr-2 text-accent" />
+            Tu Descuento Exclusivo
+          </h2>
+
+          <div className="text-center mb-6">
+            <p className="text-lg text-foreground/90 mb-2">Utiliza el siguiente código:</p>
+            <div className="inline-flex items-center bg-muted p-3 rounded-lg">
+              <span className="text-2xl md:text-3xl font-bold text-accent tracking-wider mr-4">{providerData.discountCode}</span>
+              <Button onClick={() => handleCopyCode(providerData.discountCode, providerData.name)} size="sm" variant="ghost" className="text-accent hover:bg-accent/10">
+                {copied ? <Check className="w-5 h-5 mr-1" /> : <Copy className="w-5 h-5 mr-1" />}
+                {copied ? "Copiado" : "Copiar"}
+              </Button>
+            </div>
+            {providerData.codeNote && <p className="text-xs text-foreground/60 mt-3 max-w-md mx-auto">{providerData.codeNote}</p>}
+          </div>
+
+          <div className="text-center mb-8">
+            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+              <a href={providerData.websiteUrl} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="mr-2 h-5 w-5" /> Visitar {providerData.name}
+              </a>
+            </Button>
+          </div>
+
+          {providerData.instructions && providerData.instructions.length > 0 && (
+            <div>
+              <h3 className="text-xl font-semibold text-primary mb-3 flex items-center">
+                <Info className="w-5 h-5 mr-2 text-primary" />
+                Instrucciones para el descuento:
+              </h3>
+              <ul className="list-decimal list-outside ml-6 space-y-1 text-foreground/80">
+                {providerData.instructions.map((step, index) => (
+                  <li key={index} dangerouslySetInnerHTML={{ __html: step }} />
+                ))}
+              </ul>
+            </div>
+          )}
+        </motion.section>
+
+        <motion.section
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+          custom={0.3}
+        >
+          <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-8 text-center">
+            <ShoppingCart className="inline-block w-7 h-7 mr-2 text-accent" />
+            Productos Recomendados
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {providerData.products.map((product) => (
+              <ProductCard
+                key={product.name}
+                product={{ ...product, providerName: providerData.name }}
+                providerUrl={providerData.websiteUrl}
+                itemVariants={itemVariants}
+              />
+            ))}
+          </div>
+        </motion.section>
+
       </div>
     </div>
   );
 };
 
-export default SupplementsPage;
+export default ProviderPageLayout;
