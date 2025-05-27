@@ -152,16 +152,17 @@ const HomePage = () => {
         itemVariants={itemVariants}
         onContactClick={handleContactClickScroll}
       />
+      <WhyChooseUsSection
+        sectionVariants={sectionVariants}
+        itemVariants={itemVariants}
+      />
       <PlansSection
         plans={plans}
         onContactClick={handleContactClickScroll}
         sectionVariants={sectionVariants}
         itemVariants={itemVariants}
       />
-      <WhyChooseUsSection
-        sectionVariants={sectionVariants}
-        itemVariants={itemVariants}
-      />
+
 
       <TestimonialsSection
         testimonials={testimonials}
