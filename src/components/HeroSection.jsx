@@ -53,10 +53,10 @@ const HeroSection = ({ logoUrl, sectionVariants, itemVariants }) => {
     <motion.section
   className="section-padding text-center bg-cover bg-center"
   style={{
-    backgroundImage: 'linear-gradient(rgba(244, 233, 216, 0.8), rgba(244, 233, 216, 0.9)), url("https://raw.githubusercontent.com/rbenitezm/naominavarro/main/src/images/logo-principal.png")',
-    backgroundSize: 'contain', // Ajusta la imagen para que se muestre completa
-    backgroundPosition: 'left', // Centra la imagen
-    backgroundRepeat: 'no-repeat', // Evita que la imagen se repita
+    backgroundImage: 'linear-gradient(rgba(244, 233, 216, 0.8), rgba(244, 233, 216, 0.9)), url("https://raw.githubusercontent.com/rbenitezm/naominavarro/main/src/images/logo-16-9-simple.png")',
+    backgroundSize: '100% 100%', 
+    backgroundPosition: 'center', 
+    backgroundRepeat: 'no-repeat', 
     width: 'auto',
     height: '50%',
   }}
@@ -65,14 +65,7 @@ const HeroSection = ({ logoUrl, sectionVariants, itemVariants }) => {
   animate="visible"
 >
       <div className="container mx-auto">
-        <motion.div
-          className="mb-8 inline-block p-2 bg-white/50 rounded-lg shadow-lg"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, type: "spring", stiffness: 120 }}
-        >
-          {/* <img src={logoUrl} alt="Naomi Navarro Logo" className="w-64 h-auto md:w-80 mx-auto rounded-md" /> */}
-        </motion.div>
+
         <motion.h1
           className="text-4xl md:text-5xl font-bold text-primary mb-6"
           variants={itemVariants}
