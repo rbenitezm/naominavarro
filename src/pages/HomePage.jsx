@@ -150,6 +150,7 @@ const HomePage = () => {
       <AppAccessSection
         sectionVariants={sectionVariants}
         itemVariants={itemVariants}
+        onContactClick={handleContactClick} 
       />
       <PlansSection 
         plans={plans} 
@@ -170,6 +171,7 @@ const HomePage = () => {
       <FaqSection
         sectionVariants={sectionVariants}
         itemVariants={itemVariants}
+        onContactClick={handleContactClick} 
       />
       <ContactSection 
         naomiEmail={naomiEmail}
