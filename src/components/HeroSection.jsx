@@ -7,7 +7,7 @@ const HeroSection = ({ logoUrl, onContactClick, sectionVariants, itemVariants })
   return (
     <motion.section
       className="section-padding text-center bg-cover bg-center"
-      style={{ backgroundImage: 'linear-gradient(rgba(244, 233, 216, 0.8), rgba(244, 233, 216, 0.9)), url("https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bnV0cml0aW9uJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80")' }}
+      style={{ backgroundImage: 'linear-gradient(rgba(244, 233, 216, 0.8), rgba(244, 233, 216, 0.9)), url("https://raw.githubusercontent.com/rbenitezm/growly-landing/growly-landing/client/src/images/logo-principal.png&auto=format&fit=crop&w=1200&q=80")' }}
       variants={sectionVariants}
       initial="hidden"
       animate="visible"

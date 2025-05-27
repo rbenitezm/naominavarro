@@ -33,6 +33,7 @@ const PlansSection = ({ plans, onContactClick, sectionVariants, itemVariants }) 
                   <div className="p-3 bg-primary/10 rounded-full mb-3">{plan.icon}</div>
                   <CardTitle className="text-2xl text-primary">{plan.name}</CardTitle>
                   {plan.popular && <span className="text-xs bg-accent text-accent-foreground font-semibold px-2 py-1 rounded-full absolute -top-3 -right-3 transform rotate-6">POPULAR</span>}
+                  {plan.oferta && <span className="text-xs bg-accent text-accent-foreground font-semibold px-2 py-1 rounded-full absolute -top-3 -right-3 transform rotate-6">10% DESCUENTO</span>}
                   <CardDescription className="text-3xl font-bold text-accent pt-2">{plan.price}
                     {plan.name === "Pack Abonado" ? <span className="text-sm text-muted-foreground">/trimestre</span> : <span className="text-sm text-muted-foreground">/mes</span>}
                   </CardDescription>
