@@ -113,16 +113,21 @@ const Header = ({ onContactClick }) => {
     if (hasSubmenu) {
       return (
         <DropdownMenuSub>
-          <DropdownMenuSubTrigger className="flex items-center w-full px-4 py-3 text-base font-medium rounded-md text-foreground/80 hover:bg-secondary/50 hover:text-primary focus:bg-accent/10">
+          <DropdownMenuSubTrigger
+            className="flex items-center w-full px-4 py-3 text-base font-medium rounded-md text-foreground/80 hover:bg-secondary/50 hover:text-primary focus:bg-accent/10"
+            onClick={() => console.log('Submenú abierto')}
+          >
             {children} <ChevronDown className="ml-auto h-4 w-4" />
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
-            <DropdownMenuSubContent className="bg-background border-border shadow-lg p-1">
+            <DropdownMenuSubContent
+              className="bg-background border-border shadow-lg p-1 z-50"
+            >
               {subLinks.map(subLink => (
                 <DropdownMenuItem key={subLink.to} asChild className="focus:bg-accent/10">
                   <NavLink
                     to={subLink.to}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => setMobileMenuOpen(false)} // Cierra el menú móvil al seleccionar un subenlace
                     className={({ isActive }) =>
                       `flex items-center w-full px-3 py-2 text-sm font-medium rounded-md
                       ${isActive
@@ -160,7 +165,6 @@ const Header = ({ onContactClick }) => {
     );
   };
 
-
   return (
     <header className="py-4 px-4 md:px-8 sticky top-0 z-50 bg-background/90 backdrop-blur-lg shadow-sm">
       <div className="container mx-auto flex justify-between items-center">
@@ -188,7 +192,10 @@ const Header = ({ onContactClick }) => {
                 <span className="sr-only">Abrir menú</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-64 mt-2 p-2 bg-background shadow-xl rounded-lg border-border">
+            <DropdownMenuContent
+              align="end"
+              className="w-64 mt-2 p-2 bg-background shadow-xl rounded-lg border-border md:hidden"
+            >
               {navLinks.map(link => (
                 link.isSubmenu ? (
                   <MobileNavItem key={link.label} hasSubmenu={true} subLinks={link.subLinks}>
@@ -202,17 +209,6 @@ const Header = ({ onContactClick }) => {
                   </DropdownMenuItem>
                 )
               ))}
-              <DropdownMenuItem asChild className="focus:bg-accent/10">
-                <button
-                  onClick={() => {
-                    onContactClick();
-                    setMobileMenuOpen(false);
-                  }}
-                  className="flex items-center w-full px-4 py-3 text-base font-medium rounded-md text-foreground/80 hover:bg-secondary/50 hover:text-primary"
-                >
-                  <Mail className="mr-2 h-4 w-4" /> Contactar
-                </button>
-              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
