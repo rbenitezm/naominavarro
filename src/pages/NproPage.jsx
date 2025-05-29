@@ -6,13 +6,13 @@ const NproPage = () => {
     name: "N-PRO",
     pageTitle: "Descuentos Exclusivos en N-PRO",
     logoUrl: "https://npro.es/wp-content/uploads/2024/02/NPRO-NEW-LOGO-1536x557.png?q=80&w=400&auto=format&fit=crop",
-    intro: "Accede a suplementación de alta calidad con N-PRO utilizando mi código de descuento exclusivo. Productos formulados para optimizar tu rendimiento y recuperación.",
+    intro: "Accede a suplementación de alta calidad con N-PRO utilizando mi código de descuento exclusivo. Productos formulados para optimizar tu salud digestiva.",
     discountCode: "521986",
     websiteUrl: "https://www.npro.es/",
     instructions: [
-      "1. Visita la web de <a href=\"https://www.npro.es/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.npro.es/</a>.",
-      "2. Añade tus productos al carrito.",
-      "3. Introduce el código de descuento <strong>521986</strong> en la casilla correspondiente antes de finalizar la compra.",
+      "Visita la web de <a href=\"https://www.npro.es/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.npro.es/</a>.",
+      "Añade tus productos al carrito.",
+      "Introduce el código de descuento <strong>521986</strong> en la casilla correspondiente antes de finalizar la compra.",
     ],
     codeNote: "Este código te proporcionará un descuento especial en todos los productos de N-PRO.",
     products: [

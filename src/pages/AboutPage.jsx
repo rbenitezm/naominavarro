@@ -23,37 +23,47 @@ const AboutPage = () => {
 
   const experience = [
     {
-      title: "Nutricionista Deportiva en Centro Fitness XYZ",
-      period: "2020 - Presente",
-      description: "Asesoramiento nutricional personalizado para atletas de alto rendimiento y entusiastas del fitness. Desarrollo de planes de comidas y suplementación.",
+      title: "",
+      period: "",
+      description: "Más de 10 años como dietista clínica en hospitales y centros de salud, ayudando a pacientes con patologías complejas a mejorar su calidad de vida. También he liderado nuevos servicios de nutrición y presoterapia en el ámbito privado. Con base sólida en cocina profesional, combino ciencia y sabor en cada recomendación.",
       delay: 0.1,
     },
     {
-      title: "Dietista Clínica en Hospital ABC",
-      period: "2018 - 2020",
-      description: "Evaluación y tratamiento nutricional para pacientes con diversas patologías. Colaboración con equipos multidisciplinares.",
-      delay: 0.2,
+      title: "",
+      period: "",
+      description: "<ul><li>Mejorar la composición corporal</li>" +
+        "<li>Dieta mediterrénea</li>" +
+        "<li>Dieta cetogénica</li>" +
+        "<li>Diabetes tipo II</li></ul>",
+      delay: 0.1,
+    },
+    {
+      title: "",
+      period: "",
+      description: "Diabetes tipo II, hipertensión, sindrome metabólico, nutrición deportiva, hipedema, transtornos hormolales, interpretación de analíticas, antropometría, ayuno intermitente",
+      delay: 0.1,
     },
   ];
 
   const education = [
     {
-      degree: "Máster en Nutrición Deportiva",
-      institution: "Universidad Internacional de Deporte",
-      year: "2019",
+      degree: "Grado Superior en Dietética",
+      institution: "Centre d'Estudis de Catalunya (Barcelona)",
+      year: "2010",
       delay: 0.1,
     },
     {
-      degree: "Grado en Nutrición Humana y Dietética",
-      institution: "Universidad Nacional de Salud",
-      year: "2018",
-      delay: 0.2,
-    },
-    {
-      degree: "Certificación en Coaching Nutricional",
-      institution: "Instituto de Bienestar Integral",
-      year: "2021",
+      degree: "Máster en Composición Corporal y Nutrición Deportiva",
+      institution: "UCAM",
+      year: "2025",
       delay: 0.3,
+    },
+
+    {
+      degree: "Curso ISAK nivel I",
+      institution: "Universitat Blanquerna (Barcelona)",
+      year: "2025",
+      delay: 0.4,
     },
   ];
 
@@ -68,32 +78,39 @@ const AboutPage = () => {
           custom={0.1}
         >
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <motion.div 
+            <motion.div
               className="w-full md:w-1/3"
               variants={itemVariants}
               custom={0.2}
             >
-              <img 
+              <img
                 className="rounded-lg shadow-2xl w-full h-auto max-w-sm mx-auto md:mx-0 object-cover aspect-square"
                 alt="Naomi Navarro, nutricionista y entrenadora personal"
-               src="https://images.unsplash.com/photo-1650289090342-ab792ac872c4" />
+                src="https://images.unsplash.com/photo-1650289090342-ab792ac872c4" />
             </motion.div>
-            <motion.div 
+            <motion.div
               className="w-full md:w-2/3"
+              style={{ textAlign: 'justify' }}
               variants={itemVariants}
               custom={0.3}
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 ">
                 Conoce a <span className="text-accent">Naomi Navarro</span>
               </h1>
               <p className="text-lg text-foreground/80 mb-4">
-                ¡Hola! Soy Naomi, y mi pasión es ayudarte a transformar tu vida a través de una nutrición inteligente y un entrenamiento efectivo. Desde pequeña, me fascinó cómo la alimentación y el ejercicio podían impactar nuestro bienestar físico y mental.
+                <b>¡Hola! Soy Naomi</b>, y si hay algo que me hace vibrar es ver cómo la alimentación y el entrenamiento pueden cambiar vidas… ¡de verdad!
               </p>
               <p className="text-lg text-foreground/80 mb-4">
-                Mi misión va más allá de crear dietas; busco enseñarte a comer de forma saludable y sostenible, disfrutando del proceso y construyendo hábitos que te acompañen para siempre. Creo firmemente en la personalización, porque cada persona es única y merece un plan que se adapte a sus metas, gustos y ritmo de vida.
+                Mi historia empieza entre cazuelas, fogones y el bullicio del restaurante de mis abuelos. Allí crecí entre estofados, espiando recetas y aprendiendo, plato a plato, lo que significa cocinar con amor. Mi abuela, una crack de la cocina, me enseñó muchísimos platos que aún hoy sigo preparando (con su toque, claro).
+              </p>
+              <p className="text-lg text-foreground/80 mb-4">
+                Pero no me quedé ahí. Un día pensé: “¿Y si llevo todo esto un poco más allá?” Y así empezó todo. Me metí de lleno en el mundo de la nutrición, formándome sin parar y descubriendo que mi pasión no era solo comer bien (que también), sino <b>ayudar a los demás a sentirse bien a través de lo que comen.</b>
+              </p>
+              <p className="text-lg text-foreground/80 mb-4">
+                No hago dietas milagro. No creo en restricciones absurdas. Lo que hago es enseñarte a comer bien, a disfrutarlo y a que te sientas a gusto en tu piel. Porque cada persona es única, y tu plan también debería serlo.
               </p>
               <p className="text-lg text-foreground/80">
-                Me dedico a la dietética porque quiero ser esa guía que te impulse a alcanzar tu mejor versión, sintiéndote con energía, confianza y, sobre todo, ¡feliz con tu cuerpo y tu salud!
+                Quiero acompañarte, motivarte y darte herramientas para que aprender a cuidar tu cuerpo se convierta en una experiencia positiva, respetuosa y llena de descubrimientos. Con bienestar, con alegría… <b>¡y con ganas de comerte el mundo!</b>
               </p>
             </motion.div>
           </div>
@@ -108,26 +125,33 @@ const AboutPage = () => {
           custom={0.2}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8 text-center">
-            Mi <span className="text-accent">Experiencia</span> Laboral
+            Mi <span className="text-accent">Experiencia</span>
           </h2>
-          <div className="space-y-8 max-w-3xl mx-auto">
-            {experience.map((exp) => (
-              <motion.div
-                key={exp.title}
-                className="p-6 glassmorphism-card rounded-lg"
-                variants={itemVariants}
-                custom={exp.delay}
-              >
-                <div className="flex items-start gap-4">
-                  <Briefcase className="w-8 h-8 text-accent mt-1 shrink-0" />
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-1">{exp.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-2">{exp.period}</p>
-                    <p className="text-foreground/80 text-sm">{exp.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 text-center">
+            <motion.div
+              className="w-full md:w-2/3"
+              style={{ textAlign: 'justify' }}
+              variants={itemVariants}
+              custom={0.3}
+            >
+              <p className="text-lg text-foreground/80 mb-4">
+                Más de 10 años como dietista clínica en hospitales y centros de salud, ayudando a pacientes con patologías complejas a mejorar su calidad de vida. También he liderado nuevos servicios de nutrición y presoterapia en el ámbito privado. Con base sólida en cocina profesional, combino ciencia y sabor en cada recomendación.
+              </p>
+              <ul className="list-disc list-inside ml-6 space-y-2 text-foreground/80 grid sm:grid-cols-1 md:grid-cols-2 gap-x-8">
+                <li>Mejorar la composición corporal</li>
+                <li>Dieta mediterránea</li>
+                <li>Dieta cetogénica</li>
+                <li>Diabetes tipo II</li>
+                <li>Hipertensión</li>
+                <li>Síndrome metabólico</li>
+                <li>Nutrición deportiva</li>
+                <li>Lipedema</li>
+                <li>Transtornos hormonales</li>
+                <li>Interpretación de analíticas</li>
+                <li>Antropometría</li>
+                <li>Ayuno intermitente</li>
+              </ul>
+            </motion.div>
           </div>
         </motion.section>
 

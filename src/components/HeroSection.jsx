@@ -65,7 +65,6 @@ const HeroSection = ({ logoUrl, sectionVariants, itemVariants }) => {
   animate="visible"
 >
       <div className="container mx-auto">
-
         <motion.h1
           className="text-4xl md:text-5xl font-bold text-primary mb-6"
           variants={itemVariants}
