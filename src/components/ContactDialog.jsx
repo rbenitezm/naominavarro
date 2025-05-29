@@ -14,12 +14,10 @@ import {
 } from '@/components/ui/dialog';
 import { Zap } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { addSubscriber } from '../services/mailerLite';
+import MailerLiteForm from './MailerLiteForm';
 
 const ContactDialog = ({ triggerText = "¡Empieza tu transformación!", buttonClassName, onSubmit }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const { toast } = useToast();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +37,7 @@ const ContactDialog = ({ triggerText = "¡Empieza tu transformación!", buttonCl
       const subject = `Solicitud de transformación de: ${name}`;
       const body = `Hola Naomi,\n\nMe gustaría empezar mi transformación.\n\nNombre: ${name}\nEmail: ${email}\n\n¡Gracias!`;
       window.location.href = `mailto:${naomiEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
+
       toast({
         title: "¡Formulario enviado!",
         description: "Redirigiendo a tu cliente de correo para enviar la información.",
@@ -51,9 +49,62 @@ const ContactDialog = ({ triggerText = "¡Empieza tu transformación!", buttonCl
     setEmail('');
   };
 
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { toast } = useToast();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const submitToHubspot = async (e) => {
+    e.preventDefault();
+    if (!name || !email) {
+      toast({
+        title: "Campos incompletos",
+        description: "Por favor, introduce tu nombre y email.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const portalId = "146279114";
+    const formGuid = "2750ec94-d773-4234-ba83-289799b77a62";
+    const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`;
+
+    const payload = {
+      submittedAt: Date.now(),
+      fields: [
+        { name: "firstname", value: name },
+        { name: "email", value: email }
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title
+      }
+    };
+
+    setIsSubmitting(true);
+
+    try {
+      await addSubscriber(email);
+
+    } catch {
+    }
+
+    toast({
+      title: "¡Formulario enviado!",
+      description: "Pronto Naomi se pondrá en contacto contigo.",
+    });
+
+    setIsDialogOpen(false);
+    setName('');
+    setEmail('');
+  };
+
   return (
+
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
+
         <Button
           size="lg"
           className={
@@ -65,54 +116,16 @@ const ContactDialog = ({ triggerText = "¡Empieza tu transformación!", buttonCl
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-background text-foreground">
-        <DialogHeader>
-          <DialogTitle className="text-primary">Comienza tu Viaje</DialogTitle>
-          <DialogDescription>
-            Rellena tus datos y Naomi se pondrá en contacto contigo lo antes posible.
-          </DialogDescription>
-        </DialogHeader>
-        <form onSubmit={handleSubmit}>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right text-foreground/80">
-                Nombre
-              </Label>
-              <Input
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="col-span-3 bg-background border-border focus:ring-accent"
-                placeholder="Tu nombre completo"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="email" className="text-right text-foreground/80">
-                Email
-              </Label>
-              <Input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="col-span-3 bg-background border-border focus:ring-accent"
-                placeholder="tu@email.com"
-              />
-            </div>
-          </div>
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button type="button" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                Cancelar
-              </Button>
-            </DialogClose>
-            <Button type="submit" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              Comienza ya
-            </Button>
-          </DialogFooter>
-        </form>
+        <MailerLiteForm />
+
       </DialogContent>
     </Dialog>
   );
 };
 
 export default ContactDialog;
+
+/*
+
+
+*/
