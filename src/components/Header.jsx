@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Mail, Menu, X, Home, User, Tag as TagIcon, ChevronDown, ShoppingCart, Leaf } from 'lucide-react';
+import { Mail, Menu, X, Home, User, Tag as TagIcon, ChevronDown, ShoppingCart, Leaf, Book } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Instagram } from 'lucide-react';
 import {
@@ -22,6 +22,7 @@ const Header = ({ onContactClick }) => {
   const navLinks = [
     { to: "/", label: "Inicio", icon: <Home className="mr-2 h-4 w-4" /> },
     { to: "/quien-soy", label: "Quién Soy", icon: <User className="mr-2 h-4 w-4" /> },
+    { to: "/ebook", label: "Ebook", icon: <Book className="mr-2 h-4 w-4" /> },
     {
       label: "Suplementos",
       icon: <TagIcon className="mr-2 h-4 w-4" />,

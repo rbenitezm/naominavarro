@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import HomePage from '@/pages/HomePage';
+import Ebook from '@/pages/Ebook';
 import AboutPage from '@/pages/AboutPage';
 import NproPage from '@/pages/NproPage';
 import CienPorCienNaturalPage from '@/pages/CienPorCienNaturalPage';
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "quien-soy", element: <AboutPage /> },
+      { path: "ebook", element: <Ebook /> }, 
       { path: "suplementos/npro", element: <NproPage /> },
       { path: "suplementos/cien-por-cien-natural", element: <CienPorCienNaturalPage /> },
     ],
