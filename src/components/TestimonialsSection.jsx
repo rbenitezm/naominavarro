@@ -12,6 +12,9 @@ const TestimonialsSection = ({ testimonials, sectionVariants, itemVariants }) =>
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
+      style={{
+        background: 'linear-gradient(180deg, #f3ecdc 0%, #caa761 100%)',
+      }}
       custom={0.3}
     >
       <div className="container mx-auto">

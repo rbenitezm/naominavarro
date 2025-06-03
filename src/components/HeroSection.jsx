@@ -53,7 +53,7 @@ const HeroSection = ({ logoUrl, sectionVariants, itemVariants }) => {
     <motion.section
   className="section-padding text-center bg-cover bg-center"
   style={{
-    backgroundImage: 'linear-gradient(rgba(244, 233, 216, 0.8), rgba(244, 233, 216, 0.9)), url("https://raw.githubusercontent.com/rbenitezm/naominavarro/main/src/images/logo-16-9-simple.png")',
+    backgroundImage: 'linear-gradient(rgba(244, 233, 216, 0.8),#caa761), url("https://raw.githubusercontent.com/rbenitezm/naominavarro/main/src/images/logo-16-9-simple.png")',
     backgroundSize: '100% 100%', 
     backgroundPosition: 'center', 
     backgroundRepeat: 'no-repeat', 

@@ -54,6 +54,9 @@ const FaqSection = ({ sectionVariants, itemVariants, onContactClick }) => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       custom={0.3}
+      style={{
+        background: 'linear-gradient(180deg, #caa761 0%, #4a4f3910 100%)',
+      }}
     >
       <div className="container mx-auto max-w-3xl">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">

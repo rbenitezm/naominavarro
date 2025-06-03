@@ -15,11 +15,14 @@ const AppAccessSection = ({ sectionVariants, itemVariants, onContactClick }) => 
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       custom={0.25}
+      style={{
+        background: 'linear-gradient(180deg, #caa761 0%, #f7f5f0 100%)',
+      }}
     >
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Acceso Exclusivo a Nuestra <span className="text-accent">App de Dietas</span>
+            Acceso Exclusivo a Nuestra App de Dietas
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             Todos nuestros clientes obtienen acceso gratuito a una aplicación móvil donde podrán gestionar su dieta, ver menús personalizados y mucho más, todo bajo la supervisión de Naomi.

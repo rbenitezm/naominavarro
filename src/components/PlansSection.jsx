@@ -14,6 +14,9 @@ const PlansSection = ({ plans, onContactClick, sectionVariants, itemVariants }) 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
+      style={{
+        background: 'linear-gradient(180deg, rgb(163, 172, 116) 0%, #f3ecdc 100%)',
+      }}
       custom={0.2}
     >
       <div className="container mx-auto">

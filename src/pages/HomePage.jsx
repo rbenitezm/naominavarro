@@ -54,7 +54,7 @@ const HomePage = () => {
         "Lista de la compra",
         "Acceso a software de dietas",
         "Entrenamiento personalizado",
-        "Preparación batch cooking para 3 días",
+        "Preparación batch cooking para 3 días (Según disponibilidad geográfica)",
         "Acompañamiento de compra",
       ],
       icon: <Utensils className="w-8 h-8 text-primary" />,
