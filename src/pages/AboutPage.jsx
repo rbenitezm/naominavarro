@@ -86,7 +86,7 @@ const AboutPage = () => {
               <img
                 className="rounded-lg shadow-2xl w-full h-auto max-w-sm mx-auto md:mx-0 object-cover "
                 alt="Naomi Navarro, nutricionista y entrenadora personal"
-                src="https://raw.githubusercontent.com/rbenitezm/naominavarro/main/src/images/naomi.png" />
+                src="/images/naomi.png" />
             </motion.div>
             <motion.div
               className="w-full md:w-2/3"

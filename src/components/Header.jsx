@@ -170,7 +170,12 @@ const Header = ({ onContactClick }) => {
     <header className="py-4 px-4 md:px-8 sticky top-0 z-50 bg-background/90 backdrop-blur-lg shadow-sm">
       <div className="container mx-auto flex justify-between items-center">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-          <Link to="/" className="text-2xl font-bold text-primary hover:text-accent transition-colors">
+          <Link to="/" className="text-2xl flex font-bold text-primary hover:text-accent transition-colors">
+            <img
+              src="/images/logo-mini.png" // Ruta de la imagen en la carpeta public
+              alt="Logo Naomi Navarro"
+              className="w-8 h-8 mr-2" // Ajusta el tamaño y el margen
+            />
             Naomi Navarro
           </Link>
         </motion.div>

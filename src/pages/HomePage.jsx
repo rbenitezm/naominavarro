@@ -14,7 +14,7 @@ import ContactSection from '@/components/ContactSection';
 const HomePage = () => {
   const { toast } = useToast();
   const naomiEmail = "naominavarrogarriga@gmail.com";
-  const logoUrl = "https://raw.githubusercontent.com/rbenitezm/naominavarro/main/src/images/logo-principal.png";
+  const logoUrl = "/images/logo-principal.png";
 
   const plans = [
     {
