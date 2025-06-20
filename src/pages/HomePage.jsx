@@ -82,18 +82,14 @@ const HomePage = () => {
 
   const testimonials = [
     {
-      quote: "Naomi transformó mi relación con la comida. ¡Ahora como saludable y disfruto cada bocado!",
-      name: "Laura G.",
+      quote: "Hola mi nombre es Jose Maria Aragon Dueñas paciente de Naomi Navarro y mi experiencia ha sido brutal, contentisimo con el progreso tanto personal como Deportivo. <br/><br/> Sin agobios ni prohibiciones, simplenente un orden y cambios de habitos alimentarios, desde que empecé hace 2 meses llevo 11 kilos bajados y seguimos trabajando en equipo. <br/><br/>Es super atenta a todas las dudas y siempre dispuesta ayudarte y hacerte disfutar de los placeres de una buena alimentacion. Es una gran profesional.",
+      name: "Jose Maria",
       delay: 0.1,
     },
+   
     {
-      quote: "Los entrenamientos personalizados son increíbles. He alcanzado metas que nunca pensé posibles.",
-      name: "Carlos P.",
-      delay: 0.2,
-    },
-    {
-      quote: "El Pack Premium es una inversión en mi salud. El batch cooking me ahorra muchísimo tiempo.",
-      name: "Sofía M.",
+      quote: "Hace unos meses mi padre tuvo un achaque bastante fuerte de gota y con la medicacion no encontraba mejora, me puse en contaco con Naomi y nos atendio maravillosamente, es una gran profesional, y muy atenta! <br/><br/>  Le hizo una dieta, alimentos que debe y que no debe tomar, un seguimiento de la dieta y todavia a dia de hoy ahun  se preocupa de saber  como le va. Estoy muy agradecida!! <br/><br/>Gracias Naomi!",
+      name: "Alba",
       delay: 0.3,
     },
   ];

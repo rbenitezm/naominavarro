@@ -33,7 +33,10 @@ const TestimonialsSection = ({ testimonials, sectionVariants, itemVariants }) =>
               <Card className="glassmorphism-card h-full flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300">
                 <CardContent className="pt-6">
                   <Users className="w-10 h-10 text-accent mb-4" />
-                  <p className="text-foreground/90 italic mb-4">"{testimonial.quote}"</p>
+                  <p
+                    className="text-foreground/90 italic mb-4"
+                    dangerouslySetInnerHTML={{ __html: `"${testimonial.quote}"` }}
+                  ></p>
                 </CardContent>
                 <CardFooter>
                   <p className="font-semibold text-primary">{testimonial.name}</p>
